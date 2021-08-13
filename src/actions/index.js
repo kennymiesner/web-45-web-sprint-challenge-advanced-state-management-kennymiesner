@@ -9,26 +9,41 @@ import axios from 'axios';
   3. Add a standard action that allows us to set the value of the error message slice of state.
 */
 
-export const FETCH_SMURF_START = 'FETCH_SMURF_START'
-export const FETCH_SMURF_SUCCESS = 'FETCH_SMURF_SUCCESS'
-export const FETCH_SMURF_FAIL = 'FETCH_SMURF_FAIL'
-export const ADD_NEW_SMURF = 'ADD_NEW_SMURF'
+export const FETCH_START = 'FETCH_START'
+export const FETCH_SUCCESS = 'FETCH_SUCCESS'
+export const FETCH_FAIL = 'FETCH_FAIL'
+export const ADD_SMURF = 'ADD_SMURF'
 export const SET_ERROR = 'SET_ERROR'
 
-export const fetchSmurfs = () => dispatch => {
-  dispatch({ type: FETCH_SMURF_START });
-  axios
-    .get('http://localhost:3333/smurfs')
-    .then(res =>
-      dispatch({ type: FETCH_SMURF_SUCCESS, payload: res.data.results })
-    )
-    .catch(err => dispatch({ type: FETCH_SMURF_FAIL, payload: err }))
+export const fetchSmurfs = () => {
+  return (dispatch) => {
+    dispatch(fetchStart())
+    axios.get('http://localhost:3333/smurfs/')
+    .then(res => {
+      dispatch(fetchSuccess(res.data))
+    })
+    .catch(err => {
+      dispatch(fetchFail(err))
+    })
+  }
 }
 
-export const addNewSmurf = (formValue) => {
-  return({type: ADD_NEW_SMURF, payload: formValue})
+export const fetchStart = () => {
+  return ({type: FETCH_START})
 }
 
-export const setError = () => {
-  return({type: SET_ERROR})
+export const fetchSuccess = (smurf) => {
+  return ({type: FETCH_SUCCESS, payload: smurf})
+}
+
+export const fetchFail = (error) => {
+  return ({type: FETCH_FAIL, payload: error})
+}
+
+export const addSmurf = (formValue) => {
+  return({type: ADD_SMURF, payload: formValue})
+}
+
+export const setError = (error) => {
+  return({type: SET_ERROR, payload: error})
 }
