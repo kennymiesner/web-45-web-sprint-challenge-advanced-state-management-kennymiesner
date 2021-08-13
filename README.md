@@ -40,8 +40,8 @@ In this challenge, you are to build a Smurfs village database utilizing Redux as
 
   * [x] Add in the arguments needed to complete a standard reducer function.
   * [x] Add in a reducer case to accommodate the start of a smurf fetch.
-  * [ ] Add in a reducer case to accommodate the successful smurf api fetch.
-  * [ ] Add in a reducer cases to accommodate the failed smurf api fetch.
+  * [x] Add in a reducer case to accommodate the successful smurf api fetch.
+  * [x] Add in a reducer cases to accommodate the failed smurf api fetch.
   * [ ] Add in a reducer case to accommodate adding a smurf (including the name, nickname, position, description and an internally generated id) into your smurf list.
   * [ ] Add in a reducer case that adds in a value to the error message.
 
@@ -51,7 +51,7 @@ In this challenge, you are to build a Smurfs village database utilizing Redux as
 #### actions/index.js
   Add in the action creators and action constants needed to add a smurf to state and fetch smurfs from the server. **If at all possible, add in action cases one at a time, instead of all at once. Test your state connects and reducer cases as necessary.**
 
-  * [ ] Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retrieve smurfs from our server, saves the result of that call to our state and shows an error if one is made.
+  * [x] Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retrieve smurfs from our server, saves the result of that call to our state and shows an error if one is made.
   * [ ] Add a standard action that allows us to add new smurf (including the name, nickname, position, summary).
   * [ ] Add a standard action that allows us to set the value of the error message slice of state.
   
