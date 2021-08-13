@@ -15,29 +15,15 @@ export const FETCH_FAIL = 'FETCH_FAIL'
 export const ADD_SMURF = 'ADD_SMURF'
 export const SET_ERROR = 'SET_ERROR'
 
-export const fetchSmurfs = () => {
-  return (dispatch) => {
-    dispatch(fetchStart())
-    axios.get('http://localhost:3333/smurfs/')
-    .then(res => {
-      dispatch(fetchSuccess(res.data))
-    })
-    .catch(err => {
-      dispatch(fetchFail(err))
-    })
-  }
-}
-
-export const fetchStart = () => {
-  return ({type: FETCH_START})
-}
-
-export const fetchSuccess = (smurf) => {
-  return ({type: FETCH_SUCCESS, payload: smurf})
-}
-
-export const fetchFail = (error) => {
-  return ({type: FETCH_FAIL, payload: error})
+export const fetchSmurfs = () => dispatch => {
+  dispatch({type: FETCH_START})
+  axios.get('http://localhost:3333/smurfs/')
+  .then(res => {
+    dispatch({type: FETCH_SUCCESS, payload: res.data})
+  })
+  .catch(err => {
+      dispatch({type: FETCH_FAIL, payload: err});
+  });
 }
 
 export const addSmurf = (formValue) => {
